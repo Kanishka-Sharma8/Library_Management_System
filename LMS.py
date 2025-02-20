@@ -3,6 +3,14 @@ from datetime import datetime, timedelta
 import tkinter as tk
 from tkinter import messagebox
 
+def connect_db():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root890",  
+        database="Library_Management_System"
+    )
+
 def validate_login(role, user_id, password):
     conn = connect_db()
     cursor = conn.cursor()
@@ -63,14 +71,6 @@ def ask_user_type():
     user_choice.mainloop()
 
 ask_user_type()
-
-def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root890",  
-        database="Library_Management_System"
-    )
 
 def create_tables():
     conn = connect_db()
@@ -158,8 +158,6 @@ def add_user(username, role, password):
     conn.close()
     print("User added successfully!")
 
-
-
 def main():
     create_tables()
     while True:
@@ -196,5 +194,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+ 
+ 
 
  
